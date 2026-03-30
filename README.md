@@ -6,11 +6,19 @@ Ronan Virmani
 ## Requirements
 
 - Python 3
+- matplotlib (for graphing)
 
 ## How to Run
 
 ```bash
 python3 src/highest_value_lcs.py < data/input/example1.in
+```
+
+## Generate Runtime Graph
+
+```bash
+pip install matplotlib
+python3 src/graph.py
 ```
 
 ## Input Format
@@ -31,3 +39,10 @@ B
 <max_value>
 <subsequence>
 ```
+## Questions
+
+# 1. Runtime Analysis
+
+![Runtime Graph](runtime_graph.png)
+
+# 2. Recurrence Equation
