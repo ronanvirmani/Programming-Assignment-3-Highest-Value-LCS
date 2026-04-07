@@ -12,7 +12,7 @@ def graph_runtimes(filepath):
 
     plt.figure(figsize=(10, 6))
     plt.bar(names, times)
-    plt.xlabel('Test File')
+    plt.xlabel('File')
     plt.ylabel('Runtime (ms)')
     plt.title('Highest Value LCS Runtime')
     plt.savefig('runtime_graph.png')
