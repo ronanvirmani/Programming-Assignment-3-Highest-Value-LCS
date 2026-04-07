@@ -1,13 +1,6 @@
 import sys
 
-'''
-values: c -> v(c)
-a: the first string
-b: the second string
-
-return: (max_value, subsequence)
-'''
-def lcs(values: dict, a: str, b: str) -> tuple:
+def OPT(values: dict, a: str, b: str) -> list:
     m, n = len(a), len(b)
 
     dp = [[0] * (n + 1) for _ in range(m + 1)]
@@ -19,8 +12,13 @@ def lcs(values: dict, a: str, b: str) -> tuple:
             else:
                 dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
 
+    return dp
+
+
+def find_sol(dp: list, a: str, b: str) -> str:
     subsequence = []
-    i, j = m, n
+    i, j = len(a), len(b)
+
     while i > 0 and j > 0:
         if a[i - 1] == b[j - 1]:
             subsequence.append(a[i - 1])
@@ -31,9 +29,15 @@ def lcs(values: dict, a: str, b: str) -> tuple:
         else:
             j -= 1
 
-    subsequence.reverse()    
+    subsequence.reverse()
+    return ''.join(subsequence)
 
-    return dp[m][n], ''.join(subsequence)
+
+def lcs(values: dict, a: str, b: str) -> tuple:
+    dp = OPT(values, a, b)
+    max_value = dp[len(a)][len(b)]
+    subsequence = find_sol(dp, a, b)
+    return max_value, subsequence
 
 
 def main():
